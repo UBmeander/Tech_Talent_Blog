@@ -1,0 +1,19 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+.cant-see-me {
+	display: none;
+}
+
+body {
+	background: #0b4c5f;
+}
+
+.container {
+	background-color: rgba(255, 255, 255, 0.8);
+	margin-top: 25px;
+	margin-bottom: 25px;
+	padding-bottom: 10px;
+	border-radius: 10px;
+}
