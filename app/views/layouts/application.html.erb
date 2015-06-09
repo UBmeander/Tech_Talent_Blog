@@ -1,28 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TechTalentBlog</title>
- 
- <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"%>
+ <title>TechTalentBlog</title>
+ <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" %>
  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-
  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
- <%= javascript_include_tag"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" %>
-
-  
+ <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" %>
  <%= csrf_meta_tags %>
 </head>
 <body>
+ 
 
-<div class="container">
-	<div class="pull-right">
-		<% if user_signed_in? %>
-		<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
-		<%= link_to "Sign_Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
-		<% end %>
-	</div>
-	<%= yield %>
-</div>
+<div class="container-fluid">
+<nav class="navbar navbar-default">
 
+ <div clss="navbar-header">
+     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+       <span class="sr-only">Toggle Navigation</span>
+       <span calss="icon-bar"></span>
+       <span calss="icon-bar"></span>
+       <span calss="icon-bar"></span>
+   </button>
+   <%= link_to "All Posts", root_path, class: "navbar-brand" %>
+ </div><!-- navbar header -->
+ 
+ <!-- Collect the nav links, forms, and other content for toggling -->
+ <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+   <ul class="nav navbar-nav">
+     <li><%= link_to "Your posts", your_posts_path %></li>
+   </ul>
+   <ul class = "nav navbar-nav navbar-right">
+     <% if user_signed_in? %>
+     <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+     <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+     <% end %>
+   </ul>
+ </div>
+</nav>
+</div> 
+   
+   <% if user_signed_in? %>
+   <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+   <% end %>
+ 
+ <div class="container">
+   <%= yield %>
+ </div><!-- container -->
+ 
 </body>
 </html>
